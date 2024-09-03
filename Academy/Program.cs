@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace Academy
 {
@@ -57,7 +58,7 @@ namespace Academy
 #endif
 
 			//					Generalization:
-			Human[] group = new Human[]
+			/*Human[] group = new Human[]
 					{
 							new Student("Pinkman","Jessie",25,"Chemistry","WW_220",95,97),
 							new Teacher("White","Walter",50,"Chemistry",25),
@@ -67,7 +68,22 @@ namespace Academy
 			for(int i = 0; i<group.Length;i++)
 			{
 				Console.WriteLine(group[i]);
-			}
+			}*/
+			//					Drive
+			/*DriveInfo[] drives = DriveInfo.GetDrives();
+			foreach(DriveInfo driveInfo in drives)
+			{
+				Console.WriteLine($"Name: {driveInfo.Name}");
+				Console.WriteLine($"Type: {driveInfo.DriveType}");
+				if (driveInfo.IsReady)
+				{
+					Console.WriteLine($"TotalSize: {driveInfo.TotalSize}");
+					Console.WriteLine($"TotalFreeSpace: {driveInfo.TotalFreeSpace}");
+					Console.WriteLine($"VolumeLabel: {driveInfo.VolumeLabel}");
+				}
+			}*/
+			//					Directory
+			string root = @""
 
 		}
 	}
