@@ -58,14 +58,14 @@ namespace Academy
 #endif
 
 			//					Generalization:
-			/*Human[] group = new Human[]
+			Human[] group = new Human[]
 					{
 							new Student("Pinkman","Jessie",25,"Chemistry","WW_220",95,97),
 							new Teacher("White","Walter",50,"Chemistry",25),
 							new Graduate("Schreder","Hank",40,"Criminalistic","OBN",50,80,"How to catch Heisenberg")
 					};
 			//					Specialization:
-			for(int i = 0; i<group.Length;i++)
+			/*for(int i = 0; i<group.Length;i++)
 			{
 				Console.WriteLine(group[i]);
 			}*/
@@ -83,8 +83,38 @@ namespace Academy
 				}
 			}*/
 			//					Directory
-			string root = @""
+			string root = @"E:\TOP\дз\class\Inheritance1\IO\";
+			string subDir = @"Academy\Group";
+			DirectoryInfo directory = new DirectoryInfo(root);
+			if(!directory.Exists)
+			{
+				directory.Create();
+			}
+			DirectoryInfo newDir = directory.CreateSubdirectory(subDir);
+			Console.WriteLine(newDir.FullName);
+			//directory.Delete(true);*/
+			//					File
+			/*DirectoryInfo directory = new DirectoryInfo(@"C:\");
+			FileInfo[] files = directory.GetFiles();
+			foreach(FileInfo file in files)
+			{
+				Console.WriteLine(file.FullName);
+			}*/
+			FileInfo file = new FileInfo(newDir.FullName + @"\group.txt");
+			StreamWriter sw = file.CreateText();
+			/*foreach(Human human in group)
+			{
+				Console.WriteLine(group.ToString());
+				sw.WriteLine(group);
+				//sw.Close();
 
+			}
+			sw.Close();*/
+			for(int i=0; i<group.Length; i++)
+			{
+				sw.WriteLine(group[i]);
+			}
+			sw.Close();
 		}
 	}
 }
