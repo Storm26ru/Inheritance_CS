@@ -69,52 +69,37 @@ namespace Academy
 			{
 				Console.WriteLine(group[i]);
 			}*/
-			//					Drive
-			/*DriveInfo[] drives = DriveInfo.GetDrives();
-			foreach(DriveInfo driveInfo in drives)
-			{
-				Console.WriteLine($"Name: {driveInfo.Name}");
-				Console.WriteLine($"Type: {driveInfo.DriveType}");
-				if (driveInfo.IsReady)
-				{
-					Console.WriteLine($"TotalSize: {driveInfo.TotalSize}");
-					Console.WriteLine($"TotalFreeSpace: {driveInfo.TotalFreeSpace}");
-					Console.WriteLine($"VolumeLabel: {driveInfo.VolumeLabel}");
-				}
-			}*/
-			//					Directory
-			string root = @"E:\TOP\дз\class\Inheritance1\IO\";
-			string subDir = @"Academy\Group";
-			DirectoryInfo directory = new DirectoryInfo(root);
-			if(!directory.Exists)
-			{
-				directory.Create();
-			}
-			DirectoryInfo newDir = directory.CreateSubdirectory(subDir);
-			Console.WriteLine(newDir.FullName);
-			//directory.Delete(true);*/
-			//					File
-			/*DirectoryInfo directory = new DirectoryInfo(@"C:\");
-			FileInfo[] files = directory.GetFiles();
-			foreach(FileInfo file in files)
-			{
-				Console.WriteLine(file.FullName);
-			}*/
-			FileInfo file = new FileInfo(newDir.FullName + @"\group.txt");
-			StreamWriter sw = file.CreateText();
-			/*foreach(Human human in group)
-			{
-				Console.WriteLine(group.ToString());
-				sw.WriteLine(group);
-				//sw.Close();
 
-			}
-			sw.Close();*/
-			for(int i=0; i<group.Length; i++)
-			{
-				sw.WriteLine(group[i]);
-			}
+
+
+			string fileName = "group.txt";
+			string root = @"C:\Academy\Group\";
+			Save(group, root, fileName);
+			//Human[] groupL = Load(root, fileName);
+		}
+		public static void Save(Human[] group, string root, string fileName)
+		{
+			DirectoryInfo directory = new DirectoryInfo(root);
+			if (!directory.Exists) directory.Create();
+			FileInfo file = new FileInfo(root + fileName);//???????
+			StreamWriter sw = file.CreateText();
+			for (int i = 0; i < group.Length; i++) sw.WriteLine(group[i]);
 			sw.Close();
+		}
+
+		public static Human[] Load(string root, string fileName)
+		{
+			string[] lines = File.ReadAllLines(root + fileName);
+			foreach (string i in lines)
+			{
+				string[] parameters =i.Substring( Split('.',':',',');
+				i.Substring()
+			}
+
+
+			
+
+			
 		}
 	}
 }
