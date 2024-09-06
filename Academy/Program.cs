@@ -90,16 +90,27 @@ namespace Academy
 		public static Human[] Load(string root, string fileName)
 		{
 			string[] lines = File.ReadAllLines(root + fileName);
+			List<Human> group = new List<Human>();
 			foreach (string i in lines)
 			{
-				string[] parameters =i.Substring( Split('.',':',',');
-				i.Substring()
+				string[] bufer = i.Split('.');
+				string[] parameters = bufer[1].Replace(" ","").Split(':',',');//??????
+				group.Add(HumanFactory(parameters));
+
 			}
-
-
-			
-
-			
+				return group.ToArray();
 		}
+		public static Human HumanFactory(string[] parameters)
+        {
+			switch(parameters[0])
+            {
+				case "Student": return new Student(parameters); 
+				case "Teacher": return new Teacher(parameters);
+				case "Graduate": return new Graduate(parameters);
+				default: return null;
+
+
+            }
+        }
 	}
 }

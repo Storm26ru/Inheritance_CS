@@ -42,6 +42,13 @@ namespace Academy
 			Init(other.Speciality, other.Group, other.Rating, other.Attendance);
 			Console.WriteLine($"SCopyConstructor:\t{GetHashCode()}");
 		}
+		public Student(string[] parametrs):base(parametrs)
+        {
+			Speciality = parametrs[4];
+			Group = parametrs[5];
+			Rating = Convert.ToDouble(parametrs[6]);
+			Attendance = Convert.ToDouble(parametrs[7]);
+        }
 		~Student()
 		{
 			Console.WriteLine($"SDestructor:\t{GetHashCode()}");

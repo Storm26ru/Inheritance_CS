@@ -25,6 +25,12 @@ namespace Academy
 			this.Age = other.Age;
 			Console.WriteLine($"HCopyConstructor:\t{GetHashCode()}");
 		}
+		public Human(string[] parameters)
+        {
+			LastName = parameters[1];
+			FirstName = parameters[2];
+			Age = Convert.ToUInt32(parameters[3]);
+        }
 		~ Human()
 		{
 			Console.WriteLine($"HDestructor:\t{GetHashCode()}");
