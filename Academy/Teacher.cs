@@ -29,6 +29,11 @@ namespace Academy
 			Init(speciality, experience);
 			Console.WriteLine($"TCopyConstructor:\t{GetHashCode()}");
 		}
+		public Teacher(string[] parameters):base(parameters)
+		{
+			Speciality = parameters[4];
+			Experience = Convert.ToInt32(parameters[5]);
+		}
 		~Teacher()
 		{
 			Console.WriteLine($"TDestructor:\t{GetHashCode()}");

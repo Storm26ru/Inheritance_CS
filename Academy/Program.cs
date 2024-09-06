@@ -72,16 +72,21 @@ namespace Academy
 
 
 
-			string fileName = "group.txt";
-			string root = @"C:\Academy\Group\";
+			string fileName = "group.txt";//Console.ReadLine();
+			string root = @"C:\Academy\Group\";//Console.ReadLine();
 			Save(group, root, fileName);
-			//Human[] groupL = Load(root, fileName);
+			Human[] groupL = Load(root, fileName);
+			for (int i = 0; i < groupL.Length; i++)
+			{
+				Console.WriteLine(group[i]);
+			}
+			
 		}
 		public static void Save(Human[] group, string root, string fileName)
 		{
 			DirectoryInfo directory = new DirectoryInfo(root);
 			if (!directory.Exists) directory.Create();
-			FileInfo file = new FileInfo(root + fileName);//???????
+			FileInfo file = new FileInfo(directory.FullName + fileName);
 			StreamWriter sw = file.CreateText();
 			for (int i = 0; i < group.Length; i++) sw.WriteLine(group[i]);
 			sw.Close();
@@ -96,9 +101,9 @@ namespace Academy
 				string[] bufer = i.Split('.');
 				string[] parameters = bufer[1].Replace(" ","").Split(':',',');//??????
 				group.Add(HumanFactory(parameters));
-
+				if (group.Last() == null) group.RemoveAt(group.Count - 1);
 			}
-				return group.ToArray();
+			return group.ToArray();
 		}
 		public static Human HumanFactory(string[] parameters)
         {
@@ -108,8 +113,6 @@ namespace Academy
 				case "Teacher": return new Teacher(parameters);
 				case "Graduate": return new Graduate(parameters);
 				default: return null;
-
-
             }
         }
 	}

@@ -24,8 +24,8 @@ namespace Academy
 		}
 		public Student
 			   (
-			   string lastName, string firstName, uint age, 
-			   string speciality, string group, double rating, double attendance
+			   string lastName="", string firstName="", uint age =0, 
+			   string speciality ="", string group ="", double rating =0, double attendance =0
 			   ) : base(lastName, firstName, age)
 		{
 			Init(speciality, group, rating, attendance);

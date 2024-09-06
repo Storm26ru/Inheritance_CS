@@ -24,6 +24,10 @@ namespace Academy
 			Subject = subject;
 			Console.WriteLine($"GConstructor:\t{GetHashCode()}");
 		}
+		public Graduate(string[] parameters):base(parameters)
+		{
+			Subject = parameters[8];
+		}
 		~Graduate()
 		{
 			Console.WriteLine($"GDestructor:\t{GetHashCode()}");
