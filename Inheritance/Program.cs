@@ -10,6 +10,9 @@ namespace Inheritance
 	{
 		static void Main(string[] args)
 		{
+			string line = "Academy. Student, Jonson, 55 ";
+			string[] bufer = line.Substring(line.IndexOf('.') + 1).Split(',');
+			Console.WriteLine(bufer);
 		}
 	}
 }

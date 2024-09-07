@@ -17,8 +17,8 @@ namespace Academy
 		}
 		public Teacher
 			    (
-			     string lastName, string firstName, uint age,
-			     string speciality, int experience
+			     string lastName = "", string firstName = "", uint age = 0,
+			     string speciality = "", int experience = 0
 			    ):base(lastName,firstName,age)
 		{
 			Init(speciality, experience);
@@ -29,11 +29,11 @@ namespace Academy
 			Init(speciality, experience);
 			Console.WriteLine($"TCopyConstructor:\t{GetHashCode()}");
 		}
-		public Teacher(string[] parameters):base(parameters)
+		/*public Teacher(string[] parameters):base(parameters)
 		{
 			Speciality = parameters[4];
 			Experience = Convert.ToInt32(parameters[5]);
-		}
+		}*/
 		~Teacher()
 		{
 			Console.WriteLine($"TDestructor:\t{GetHashCode()}");
@@ -52,5 +52,13 @@ namespace Academy
 		{
 			return base.ToString() + $",{Speciality}, {Experience}";
 		}
-	}
+        public override Human Parameters(string[] parameters)
+        {
+            base.Parameters(parameters);
+			Speciality = parameters[4];
+			Experience = Convert.ToInt32(parameters[5]);
+			return this;
+		}
+
+    }
 }

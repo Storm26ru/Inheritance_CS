@@ -65,10 +65,10 @@ namespace Academy
 							new Graduate("Schreder","Hank",40,"Criminalistic","OBN",50,80,"How to catch Heisenberg")
 					};
 			//					Specialization:
-			/*for(int i = 0; i<group.Length;i++)
+			for(int i = 0; i<group.Length;i++)
 			{
 				Console.WriteLine(group[i]);
-			}*/
+			}
 
 
 
@@ -98,10 +98,10 @@ namespace Academy
 			List<Human> group = new List<Human>();
 			foreach (string i in lines)
 			{
-				string[] bufer = i.Split('.');
-				string[] parameters = bufer[1].Replace(" ","").Split(':',',');//??????
+				string[] parameters =i.Substring(i.IndexOf('.')+1).Replace(" ","").Split(':',',');
 				group.Add(HumanFactory(parameters));
 				if (group.Last() == null) group.RemoveAt(group.Count - 1);
+				//else group.Last().Parameters(parameters);
 			}
 			return group.ToArray();
 		}
@@ -109,9 +109,9 @@ namespace Academy
         {
 			switch(parameters[0])
             {
-				case "Student": return new Student(parameters); 
-				case "Teacher": return new Teacher(parameters);
-				case "Graduate": return new Graduate(parameters);
+				case "Student": return new Student().Parameters(parameters); 
+				case "Teacher": return new Teacher().Parameters(parameters);
+				case "Graduate": return new Graduate().Parameters(parameters);
 				default: return null;
             }
         }

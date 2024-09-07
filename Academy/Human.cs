@@ -11,7 +11,7 @@ namespace Academy
 		public string LastName { get; set; }
 		public string FirstName { get; set; }
 		public uint Age { get; set; }
-		public Human(string lastName, string firstName, uint age)
+		public Human(string lastName = "", string firstName = "", uint age = 0)
 		{
 			LastName = lastName;
 			FirstName = firstName;
@@ -25,12 +25,12 @@ namespace Academy
 			this.Age = other.Age;
 			Console.WriteLine($"HCopyConstructor:\t{GetHashCode()}");
 		}
-		public Human(string[] parameters)
+		/*public Human(string[] parameters)
         {
 			LastName = parameters[1];
 			FirstName = parameters[2];
 			Age = Convert.ToUInt32(parameters[3]);
-        }
+        }*/
 		~ Human()
 		{
 			Console.WriteLine($"HDestructor:\t{GetHashCode()}");
@@ -43,6 +43,13 @@ namespace Academy
 		public override string ToString()
 		{
 			return base.ToString()+$": {LastName}, {FirstName}, {Age}";
+		}
+		public virtual Human Parameters(string[] parameters)
+		{
+			LastName = parameters[1];
+			FirstName = parameters[2];
+			Age = Convert.ToUInt32(parameters[3]);
+			return this;
 		}
 	}
 }

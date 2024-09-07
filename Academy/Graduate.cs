@@ -10,10 +10,10 @@ namespace Academy
 	{
 		public string Subject { get; set; }
 		public Graduate
-			     (
-			      string lastName, string firstName, uint age, 
-				  string speciality, string group, double rating, double attendance,
-				  string subject
+				 (
+				  string lastName = "", string firstName = "", uint age = 0,
+				  string speciality = "", string group = "", double rating = 0, double attendance = 0,
+				  string subject = ""
 			): base(lastName,firstName,age,speciality,group,rating,attendance)
 		{
 			Subject = subject;
@@ -24,10 +24,10 @@ namespace Academy
 			Subject = subject;
 			Console.WriteLine($"GConstructor:\t{GetHashCode()}");
 		}
-		public Graduate(string[] parameters):base(parameters)
+		/*public Graduate(string[] parameters):base(parameters)
 		{
 			Subject = parameters[8];
-		}
+		}*/
 		~Graduate()
 		{
 			Console.WriteLine($"GDestructor:\t{GetHashCode()}");
@@ -41,5 +41,11 @@ namespace Academy
 		{
 			return base.ToString() + $", {Subject}";
 		}
-	}
+        public override Human Parameters(string[] parameters)
+        {
+            base.Parameters(parameters);
+			Subject = parameters[8];
+			return this;
+		}
+    }
 }

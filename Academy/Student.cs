@@ -42,13 +42,13 @@ namespace Academy
 			Init(other.Speciality, other.Group, other.Rating, other.Attendance);
 			Console.WriteLine($"SCopyConstructor:\t{GetHashCode()}");
 		}
-		public Student(string[] parametrs):base(parametrs)
+		/*public Student(string[] parametrs):base(parametrs)
         {
 			Speciality = parametrs[4];
 			Group = parametrs[5];
 			Rating = Convert.ToDouble(parametrs[6]);
 			Attendance = Convert.ToDouble(parametrs[7]);
-        }
+        }*/
 		~Student()
 		{
 			Console.WriteLine($"SDestructor:\t{GetHashCode()}");
@@ -68,6 +68,15 @@ namespace Academy
 		public override string ToString()
 		{
 			return base.ToString() + $", {Speciality}, {Group}, {Rating}, {Attendance}";
+		}
+		public override Human Parameters (string[] parameters)
+		{
+			base.Parameters(parameters);
+			Speciality = parameters[4];
+			Group = parameters[5];
+			Rating = Convert.ToDouble(parameters[6]);
+			Attendance = Convert.ToDouble(parameters[7]);
+			return this;
 		}
 	}
 }
